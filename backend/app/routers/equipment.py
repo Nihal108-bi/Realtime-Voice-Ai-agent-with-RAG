@@ -2,7 +2,7 @@ import os
 import tempfile
 import uuid
 from datetime import datetime
-from typing import List, Optional, Annotated
+from typing import List, Optional
 from fastapi import APIRouter, HTTPException, status, UploadFile, File, Form
 from loguru import logger
 from bson import ObjectId
@@ -81,8 +81,7 @@ async def get_one_equipment(equipment_id: str):
 @router.post("/{equipment_id}/documents", status_code=status.HTTP_201_CREATED)
 async def upload_equipment_documents(
     equipment_id: str,
-    # files: List[UploadFile] = File(...),
-    files: Annotated[List[UploadFile], File(description="Upload multiple files")],
+    files: List[UploadFile] = File(...),
     description: Optional[str] = Form(None),
 ):
     db = get_database()
@@ -277,6 +276,16 @@ async def upload_equipment_documents(
             continue
 
     return {"documents": created_docs, "count": len(created_docs)}
+
+
+
+
+
+
+
+
+
+
 
 
 

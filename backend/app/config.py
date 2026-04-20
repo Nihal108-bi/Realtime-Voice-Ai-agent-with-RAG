@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     GROQ_MODEL: str = "openai/gpt-oss-20b"
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
 
-    GOOGLE_API_KEY: str
-    EMBEDDING_MODEL: str = "models/text-embedding-004"
+    OPENAI_API_KEY: str
+    EMBEDDING_MODEL: str = "text-embedding-3-small"
     CHUNK_SIZE: int = 1000
     CHUNK_OVERLAP: int = 250
     VECTOR_INDEX_NAME: str = "vector_index"
